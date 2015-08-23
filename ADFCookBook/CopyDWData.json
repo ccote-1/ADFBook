@@ -1,0 +1,46 @@
+{
+  "name": "CopyDWData",
+  "properties": {
+    "description": "This pipeline is used to copy data from SQL Server on-premises data warehouse to adfcookbookcc blob storage.",
+    "activities": [
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "SqlSource",
+            "sqlReaderQuery": "$$Text.Format('SELECT   OrderDate, FirstName, LastName, CompanyName, Category, ProductName, ProvenanceCode, ProvenanceDescription, EnglishDescription, OrderQy, UnitPrice, Discount, TaxAmount, Freight, SalesOrderNumber, PurchareOrderNumber FROM AdventureWorksLTDW2014.DW.vwFactOrders WHERE OrderDate <= \\'{0:yyyy-MM-dd}\\'', WindowStart)"
+          },
+          "sink": {
+            "type": "BlobSink",
+            "writeBatchSize": 0,
+            "writeBatchTimeout": "00:00:00"
+          }
+        },
+        "inputs": [
+          {
+            "name": "AdventureWorksLTDW-Dataset"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "ADFCookBook-Storage"
+          }
+        ],
+        "policy": {
+          "timeout": "01:00:00",
+          "concurrency": 1,
+          "retry": 3
+        },
+        "scheduler": {
+          "frequency": "Day",
+          "interval": 1
+        },
+        "name": "Copy DW Data"
+      }
+    ],
+    "start": "2015-08-01T06:00:00Z",
+    "end": "2015-08-15T06:00:00Z",
+    "isPaused": false
+  },
+  "$schema": "http://datafactories.schema.management.azure.com/schemas/2015-08-01/Microsoft.DataFactory.Pipeline.json"
+}

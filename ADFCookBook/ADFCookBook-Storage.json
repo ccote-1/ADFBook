@@ -1,0 +1,113 @@
+{
+  "name": "ADFCookBook-Storage",
+  "properties": {
+    "structure": [
+      {
+        "name": "OrderDate",
+        "type": "Datetime"
+      },
+      {
+        "name": "FirstName",
+        "type": "String"
+      },
+      {
+        "name": "CompanyName",
+        "type": "String"
+      },
+      {
+        "name": "Category",
+        "type": "String"
+      },
+      {
+        "name": "ProductName",
+        "type": "String"
+      },
+      {
+        "name": "ProvenanceCode",
+        "type": "Int16"
+      },
+      {
+        "name": "ProvenanceDescription",
+        "type": "String"
+      },
+      {
+        "name": "EnglishDescription",
+        "type": "String"
+      },
+      {
+        "name": "OrderQty",
+        "type": "Int16"
+      },
+      {
+        "name": "UnitPrice",
+        "type": "Decimal"
+      },
+      {
+        "name": "Discount",
+        "type": "Decimal"
+      },
+      {
+        "name": "TaxAmount",
+        "type": "Decimal"
+      },
+      {
+        "name": "Freight",
+        "type": "Decimal"
+      },
+      {
+        "name": "SalesPurchaseOrder",
+        "type": "String"
+      },
+      {
+        "name": "PurchaseOrderNumber",
+        "type": "String"
+      }
+    ],
+    "published": false,
+    "type": "AzureBlob",
+    "linkedServiceName": "ADFCookBookBlobStore",
+    "typeProperties": {
+      "fileName": "AdvDWData{Year}-{Month}-{Day}.txt",
+      "folderPath": "inputfiles/{Year}/{Month}/{Day}",
+      "format": {
+        "type": "TextFormat",
+        "rowDelimiter": "\n",
+        "columnDelimiter": ",",
+        "escapeChar": "",
+        "nullValue": "Null",
+        "quoteChar": "\""
+      },
+      "partitionedBy": [
+        {
+          "name": "Year",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "yyyy"
+          }
+        },
+        {
+          "name": "Month",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "%M"
+          }
+        },
+        {
+          "name": "Day",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "%d"
+          }
+        }
+      ]
+    },
+    "availability": {
+      "frequency": "Day",
+      "interval": 1
+    }
+  },
+  "$schema": "http://datafactories.schema.management.azure.com/schemas/2015-08-01/Microsoft.DataFactory.Table.json"
+}

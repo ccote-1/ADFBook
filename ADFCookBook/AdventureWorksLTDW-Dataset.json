@@ -1,0 +1,85 @@
+{
+  "name": "AdventureWorksLTDW-Dataset",
+  "properties": {
+    "structure": [
+      {
+        "name": "OrderDate",
+        "type": "Datetime"
+      },
+      {
+        "name": "FirstName",
+        "type": "String"
+      },
+      {
+        "name": "CompanyName",
+        "type": "String"
+      },
+      {
+        "name": "Category",
+        "type": "String"
+      },
+      {
+        "name": "ProductName",
+        "type": "String"
+      },
+      {
+        "name": "ProvenanceCode",
+        "type": "Int16"
+      },
+      {
+        "name": "ProvenanceDescription",
+        "type": "String"
+      },
+      {
+        "name": "EnglishDescription",
+        "type": "String"
+      },
+      {
+        "name": "OrderQty",
+        "type": "Int16"
+      },
+      {
+        "name": "UnitPrice",
+        "type": "Decimal"
+      },
+      {
+        "name": "Discount",
+        "type": "Decimal"
+      },
+      {
+        "name": "TaxAmount",
+        "type": "Decimal"
+      },
+      {
+        "name": "Freight",
+        "type": "Decimal"
+      },
+      {
+        "name": "SalesPurchaseOrder",
+        "type": "String"
+      },
+      {
+        "name": "PurchaseOrderNumber",
+        "type": "String"
+      }
+    ],
+    "published": false,
+    "type": "SqlServerTable",
+    "linkedServiceName": "AdventureWorksLTDW-OnPrem",
+    "typeProperties": {
+      "tableName": "DW.vwFactOrders"
+    },
+    "availability": {
+      "frequency": "Day",
+      "interval": 1
+    },
+    "policy": {
+      "externalData": {
+        "retryInterval": "00:01:00",
+        "retryTimeout": "00:05:00",
+        "maximumRetry": 2
+      }
+    }
+  },
+  "$schema": "http://datafactories.schema.management.azure.com/schemas/2015-08-01/Microsoft.DataFactory.Table.json"
+}
