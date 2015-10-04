@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="AzureSQLDW">
+  <ConnectionProperties>
+    <Extension>SQLAZURE</Extension>
+    <ConnectString>Data Source=aw5hwdp7qg.database.windows.net;Initial Catalog=AdventureworksLTDW;Encrypt=True;TrustServerCertificate=False</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>7131df5b-5057-435a-be54-d74115593b00</DataSourceID>
+</RptDataSource>

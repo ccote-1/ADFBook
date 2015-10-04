@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition">
+  <DataSet Name="">
+    <Query>
+      <DataSourceReference>AzureSQLDW</DataSourceReference>
+      <CommandText>SELECT
+  CloudMergedSales.CompanyName
+  ,CloudMergedSales.FirstName
+  ,CloudMergedSales.LastName
+  ,CloudMergedSales.Category
+  ,CloudMergedSales.ProductName
+  ,CloudMergedSales.ProvenanceCode
+  ,CloudMergedSales.ProvenanceDescription
+  ,CloudMergedSales.EnglishDescription
+  ,CloudMergedSales.OrderQty
+  ,CloudMergedSales.TotalQty
+  ,CloudMergedSales.OrderPercent
+  ,CloudMergedSales.UnitPrice
+  ,CloudMergedSales.Discount
+  ,CloudMergedSales.TaxAmount
+  ,CloudMergedSales.Freight
+  ,CloudMergedSales.SalesOrderNumber
+  ,CloudMergedSales.PurchaseOrderNumber
+FROM
+  Staging.CloudMergedSales AS CloudMergedSales</CommandText>
+      <rd:DesignerState><QueryDefinition xmlns="http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational"><SelectedColumns><ColumnExpression Schema="Staging" ColumnOwner="CloudMergedSales" ColumnName="CompanyName" /><ColumnExpression Schema="Staging" ColumnOwner="CloudMergedSales" ColumnName="FirstName" /><ColumnExpression Schema="Staging" ColumnOwner="CloudMergedSales" ColumnName="LastName" /><ColumnExpression Schema="Staging" ColumnOwner="CloudMergedSales" ColumnName="Category" /><ColumnExpression Schema="Staging" ColumnOwner="CloudMergedSales" ColumnName="ProductName" /><ColumnExpression Schema="Staging" ColumnOwner="CloudMergedSales" ColumnName="ProvenanceCode" /><ColumnExpression Schema="Staging" ColumnOwner="CloudMergedSales" ColumnName="ProvenanceDescription" /><ColumnExpression Schema="Staging" ColumnOwner="CloudMergedSales" ColumnName="EnglishDescription" /><ColumnExpression Schema="Staging" ColumnOwner="CloudMergedSales" ColumnName="OrderQty" /><ColumnExpression Schema="Staging" ColumnOwner="CloudMergedSales" ColumnName="TotalQty" /><ColumnExpression Schema="Staging" ColumnOwner="CloudMergedSales" ColumnName="OrderPercent" /><ColumnExpression Schema="Staging" ColumnOwner="CloudMergedSales" ColumnName="UnitPrice" /><ColumnExpression Schema="Staging" ColumnOwner="CloudMergedSales" ColumnName="Discount" /><ColumnExpression Schema="Staging" ColumnOwner="CloudMergedSales" ColumnName="TaxAmount" /><ColumnExpression Schema="Staging" ColumnOwner="CloudMergedSales" ColumnName="Freight" /><ColumnExpression Schema="Staging" ColumnOwner="CloudMergedSales" ColumnName="SalesOrderNumber" /><ColumnExpression Schema="Staging" ColumnOwner="CloudMergedSales" ColumnName="PurchaseOrderNumber" /></SelectedColumns></QueryDefinition></rd:DesignerState>
+    </Query>
+    <Fields>
+      <Field Name="CompanyName">
+        <DataField>CompanyName</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="FirstName">
+        <DataField>FirstName</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="LastName">
+        <DataField>LastName</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Category">
+        <DataField>Category</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="ProductName">
+        <DataField>ProductName</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="ProvenanceCode">
+        <DataField>ProvenanceCode</DataField>
+        <rd:TypeName>System.Int16</rd:TypeName>
+      </Field>
+      <Field Name="ProvenanceDescription">
+        <DataField>ProvenanceDescription</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="EnglishDescription">
+        <DataField>EnglishDescription</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="OrderQty">
+        <DataField>OrderQty</DataField>
+        <rd:TypeName>System.Int16</rd:TypeName>
+      </Field>
+      <Field Name="TotalQty">
+        <DataField>TotalQty</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="OrderPercent">
+        <DataField>OrderPercent</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="UnitPrice">
+        <DataField>UnitPrice</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="Discount">
+        <DataField>Discount</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="TaxAmount">
+        <DataField>TaxAmount</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="Freight">
+        <DataField>Freight</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="SalesOrderNumber">
+        <DataField>SalesOrderNumber</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="PurchaseOrderNumber">
+        <DataField>PurchaseOrderNumber</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>
