@@ -11,6 +11,10 @@
         "type": "String"
       },
       {
+        "name": "LastName",
+        "type": "String"
+      },
+      {
         "name": "CompanyName",
         "type": "String"
       },
@@ -73,6 +77,7 @@
       "frequency": "Day",
       "interval": 1
     },
+    "external": true,
     "policy": {
       "externalData": {
         "retryInterval": "00:01:00",

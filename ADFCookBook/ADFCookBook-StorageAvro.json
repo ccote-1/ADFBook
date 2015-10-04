@@ -1,0 +1,46 @@
+{
+  "name": "ADFCookBook-StorageAvro",
+  "properties": {
+    "published": false,
+    "type": "AzureBlob",
+    "linkedServiceName": "ADFCookBookBlobStore",
+    "typeProperties": {
+      "fileName": "AdvDWData{Year}-{Month}-{Day}.dat",
+      "folderPath": "raw/inputfiles/avro/",
+      "format": {
+        "type": "AvroFormat"
+      },
+      "partitionedBy": [
+        {
+          "name": "Year",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "yyyy"
+          }
+        },
+        {
+          "name": "Month",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "%M"
+          }
+        },
+        {
+          "name": "Day",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "%d"
+          }
+        }
+      ]
+    },
+    "availability": {
+      "frequency": "Day",
+      "interval": 1
+    }
+  },
+  "$schema": "http://datafactories.schema.management.azure.com/schemas/2015-08-01/Microsoft.DataFactory.Table.json"
+}

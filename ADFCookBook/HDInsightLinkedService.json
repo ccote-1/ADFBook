@@ -1,0 +1,14 @@
+{
+  "name": "HDInsightLinkedService",
+  "properties": {
+    "description": "This HDInsight cluster will be used to aggregate data from our AdventureWorksLTDW.",
+    "type": "HDInsight",
+    "typeProperties": {
+      "clusterUri": "https://ADFCookbookCC.azurehdinsight.net",
+      "userName": "admin",
+      "password": "**********",
+      "linkedServiceName": "ADFCookBookBlobStore"
+    }
+  },
+  "$schema": "http://datafactories.schema.management.azure.com/schemas/2015-08-01/Microsoft.DataFactory.LinkedService.json"
+}

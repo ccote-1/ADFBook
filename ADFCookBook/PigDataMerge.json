@@ -1,0 +1,50 @@
+{
+  "name": "PigDataMerge",
+  "properties": {
+    "description": "This pipeline will take data input from Azure blob storage and aggregate daily data every three days.",
+    "activities": [
+      {
+        "type": "HDInsightPig",
+        "typeProperties": {
+          "scriptPath": "scriptfiles/pig/PigSummary.pig",
+          "scriptLinkedService": "ADFCookBookBlobStore",
+          "defines": {
+            "InputPartitionLocationD1": "$$Text.Format('wasb://raw@adfcookbookcc.blob.core.windows.net/inputfiles/text/{0:yyyy}/{0:%M}/{0:%d}/', Date.AddDays(SliceStart, -2))",
+            "InputPartitionLocationD2": "$$Text.Format('wasb://raw@adfcookbookcc.blob.core.windows.net/inputfiles/text/{0:yyyy}/{0:%M}/{0:%d}/', Date.AddDays(SliceStart, -1))",
+            "InputPartitionLocationD3": "$$Text.Format('wasb://raw@adfcookbookcc.blob.core.windows.net/inputfiles/text/{0:yyyy}/{0:%M}/{0:%d}/', SliceStart)",
+            "StageDir": "$$Text.Format('wasb://stage@adfcookbookcc.blob.core.windows.net/output/text/{0:yyyy}/{0:%M}/{0:%d}/', SliceStart)",
+            "SummaryDir": "$$Text.Format('wasb://stage@adfcookbookcc.blob.core.windows.net/output/text/summary/{0:yyyy}/{0:%M}/{0:%d}/', SliceStart)"
+          }
+        },
+        "inputs": [
+          {
+            "name": "ADFCookBook-Storage"
+          },
+          {
+            "name": "ADFCookBook-HiveStorage"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "ADFCookBook-PigStorage"
+          }
+        ],
+        "policy": {
+          "timeout": "01:00:00",
+          "concurrency": 1,
+          "retry": 3
+        },
+        "scheduler": {
+          "frequency": "Day",
+          "interval": 3
+        },
+        "name": "MergeTextData",
+        "linkedServiceName": "HDInsightLinkedService"
+      }
+    ],
+    "start": "2015-08-03T00:00:00Z",
+    "end": "2015-08-15T00:00:00Z",
+    "isPaused": false
+  },
+  "$schema": "http://datafactories.schema.management.azure.com/schemas/2015-08-01/Microsoft.DataFactory.Pipeline.json"
+}

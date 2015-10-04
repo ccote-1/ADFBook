@@ -1,0 +1,55 @@
+{
+  "name": "HiveDataAggregation",
+  "properties": {
+    "description": "This pipeline will take data input from Azure blob storage and aggregate daily data every three days.",
+    "activities": [
+      {
+        "type": "HDInsightHive",
+        "typeProperties": {
+          "scriptPath": "scriptfiles/hive/AggregateDWData.hql",
+          "scriptLinkedService": "ADFCookBookBlobStore",
+          "defines": {
+            "InputPartitionLocationD1": "$$Text.Format('wasb://raw@adfcookbookcc.blob.core.windows.net/inputfiles/text/{0:yyyy}/{0:%M}/{0:%d}/', Date.AddDays(SliceStart, -2))",
+            "InputPartitionLocationD2": "$$Text.Format('wasb://raw@adfcookbookcc.blob.core.windows.net/inputfiles/text/{0:yyyy}/{0:%M}/{0:%d}/', Date.AddDays(SliceStart, -1))",
+            "InputPartitionLocationD3": "$$Text.Format('wasb://raw@adfcookbookcc.blob.core.windows.net/inputfiles/text/{0:yyyy}/{0:%M}/{0:%d}/', SliceStart)",
+            "OutputContainer": "$$Text.Format('wasb://stage@adfcookbookcc.blob.core.windows.net/output/text/{0:yyyy}/{0:%M}/{0:%d}/', SliceStart)",
+            "YearD1": "$$Text.Format('{0:yyyy}', Date.AddDays(SliceStart, -2))",
+            "MonthD1": "$$Text.Format('{0:%M}', Date.AddDays(SliceStart, -2))",
+            "DayD1": "$$Text.Format('{0:%d}', Date.AddDays(SliceStart, -2))",
+            "YearD2": "$$Text.Format('{0:yyyy}', Date.AddDays(SliceStart, -1))",
+            "MonthD2": "$$Text.Format('{0:%M}', Date.AddDays(SliceStart, -1))",
+            "DayD2": "$$Text.Format('{0:%d}', Date.AddDays(SliceStart, -1))",
+            "YearD3": "$$Text.Format('{0:yyyy}', SliceStart)",
+            "MonthD3": "$$Text.Format('{0:%M}', SliceStart)",
+            "DayD3": "$$Text.Format('{0:%d}', SliceStart)"
+          }
+        },
+        "inputs": [
+          {
+            "name": "ADFCookBook-Storage"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "ADFCookBook-HiveStorage"
+          }
+        ],
+        "policy": {
+          "timeout": "01:00:00",
+          "concurrency": 1,
+          "retry": 3
+        },
+        "scheduler": {
+          "frequency": "Day",
+          "interval": 3
+        },
+        "name": "AggregateTextData",
+        "linkedServiceName": "HDInsightLinkedService"
+      }
+    ],
+    "start": "2015-08-03T00:00:00Z",
+    "end": "2015-08-15T00:00:00Z",
+    "isPaused": false
+  },
+  "$schema": "http://datafactories.schema.management.azure.com/schemas/2015-08-01/Microsoft.DataFactory.Pipeline.json"
+}

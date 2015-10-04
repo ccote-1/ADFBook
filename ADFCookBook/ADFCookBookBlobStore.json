@@ -1,7 +1,7 @@
 {
   "name": "ADFCookBookBlobStore",
   "properties": {
-    "description": "This storage will be used by almost all activities in our factory. Think of it as being something similar to Windows file system for ETL .",
+    "description": "This storage is used by almost all activities in our factory. Think of it as being something similar to Windows file system for ETL .",
     "type": "AzureStorage",
     "typeProperties": {
       "connectionString": "DefaultEndpointsProtocol=https;AccountName=adfcookbookcc;AccountKey=**********"

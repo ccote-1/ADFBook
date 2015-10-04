@@ -1,18 +1,10 @@
 {
-  "name": "ADFCookBook-Storage",
+  "name": "ADFCookBook-HiveStorage",
   "properties": {
     "structure": [
       {
         "name": "OrderDate",
         "type": "Datetime"
-      },
-      {
-        "name": "FirstName",
-        "type": "String"
-      },
-      {
-        "name": "LastName",
-        "type": "String"
       },
       {
         "name": "CompanyName",
@@ -23,24 +15,8 @@
         "type": "String"
       },
       {
-        "name": "ProductName",
-        "type": "String"
-      },
-      {
-        "name": "ProvenanceCode",
-        "type": "Int16"
-      },
-      {
-        "name": "ProvenanceDescription",
-        "type": "String"
-      },
-      {
-        "name": "EnglishDescription",
-        "type": "String"
-      },
-      {
-        "name": "OrderQty",
-        "type": "Int16"
+        "name": "QtyOrdered",
+        "type": "Int32"
       },
       {
         "name": "UnitPrice",
@@ -59,7 +35,7 @@
         "type": "Decimal"
       },
       {
-        "name": "SalesPurchaseOrder",
+        "name": "OrderNumber",
         "type": "String"
       },
       {
@@ -71,14 +47,14 @@
     "type": "AzureBlob",
     "linkedServiceName": "ADFCookBookBlobStore",
     "typeProperties": {
-      "fileName": "AdvDWData.txt",
-      "folderPath": "raw/inputfiles/text/{Year}/{Month}/{Day}",
+      "folderPath": "outout/text/{Year}/{Month}/{Day}",
       "format": {
         "type": "TextFormat",
         "rowDelimiter": "\n",
         "columnDelimiter": "|",
         "escapeChar": "",
-        "nullValue": "Null"
+        "nullValue": "Null",
+        "quoteChar": ""
       },
       "partitionedBy": [
         {
@@ -109,7 +85,7 @@
     },
     "availability": {
       "frequency": "Day",
-      "interval": 1
+      "interval": 3
     }
   },
   "$schema": "http://datafactories.schema.management.azure.com/schemas/2015-08-01/Microsoft.DataFactory.Table.json"

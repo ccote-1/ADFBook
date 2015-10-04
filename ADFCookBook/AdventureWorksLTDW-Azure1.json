@@ -1,5 +1,5 @@
 {
-  "name": "ADFCookBook-Storage",
+  "name": "AdventureWorksLTDW-Azure",
   "properties": {
     "structure": [
       {
@@ -7,15 +7,15 @@
         "type": "Datetime"
       },
       {
+        "name": "CompanyName",
+        "type": "String"
+      },
+      {
         "name": "FirstName",
         "type": "String"
       },
       {
         "name": "LastName",
-        "type": "String"
-      },
-      {
-        "name": "CompanyName",
         "type": "String"
       },
       {
@@ -43,6 +43,14 @@
         "type": "Int16"
       },
       {
+        "name": "TotalQty",
+        "type": "Int32"
+      },
+      {
+        "name": "OrderPercent",
+        "type": "Decimal"
+      },
+      {
         "name": "UnitPrice",
         "type": "Decimal"
       },
@@ -59,7 +67,7 @@
         "type": "Decimal"
       },
       {
-        "name": "SalesPurchaseOrder",
+        "name": "SalesOrderNumber",
         "type": "String"
       },
       {
@@ -68,48 +76,14 @@
       }
     ],
     "published": false,
-    "type": "AzureBlob",
-    "linkedServiceName": "ADFCookBookBlobStore",
+    "type": "AzureSqlTable",
+    "linkedServiceName": "AdventureWorksLTDW-Azure",
     "typeProperties": {
-      "fileName": "AdvDWData.txt",
-      "folderPath": "raw/inputfiles/text/{Year}/{Month}/{Day}",
-      "format": {
-        "type": "TextFormat",
-        "rowDelimiter": "\n",
-        "columnDelimiter": "|",
-        "escapeChar": "",
-        "nullValue": "Null"
-      },
-      "partitionedBy": [
-        {
-          "name": "Year",
-          "value": {
-            "type": "DateTime",
-            "date": "SliceStart",
-            "format": "yyyy"
-          }
-        },
-        {
-          "name": "Month",
-          "value": {
-            "type": "DateTime",
-            "date": "SliceStart",
-            "format": "%M"
-          }
-        },
-        {
-          "name": "Day",
-          "value": {
-            "type": "DateTime",
-            "date": "SliceStart",
-            "format": "%d"
-          }
-        }
-      ]
+      "tableName": "Staging.CloudMergedSales"
     },
     "availability": {
       "frequency": "Day",
-      "interval": 1
+      "interval": 3
     }
   },
   "$schema": "http://datafactories.schema.management.azure.com/schemas/2015-08-01/Microsoft.DataFactory.Table.json"

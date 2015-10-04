@@ -1,0 +1,46 @@
+{
+  "name": "CopyHDInsightMergedData",
+  "properties": {
+    "description": "This pipeline copies HDInsight merged data with PIG into another SQL Azure data warehouse.",
+    "activities": [
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "BlobSource",
+            "blobColumnSeparators": "|"
+          },
+          "sink": {
+            "type": "SqlSink",
+            "writeBatchSize": 0,
+            "writeBatchTimeout": "00:00:00"
+          }
+        },
+        "inputs": [
+          {
+            "name": "ADFCookBook-PigStorage"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "AdventureWorksLTDW-Azure"
+          }
+        ],
+        "policy": {
+          "timeout": "00:05:00",
+          "concurrency": 1,
+          "retry": 3
+        },
+        "scheduler": {
+          "frequency": "Day",
+          "interval": 3
+        },
+        "name": "CopyHDInsightAzureDW"
+      }
+    ],
+    "start": "2015-08-03T00:00:00Z",
+    "end": "2015-08-15T00:00:00Z",
+    "isPaused": false
+  },
+  "$schema": "http://datafactories.schema.management.azure.com/schemas/2015-08-01/Microsoft.DataFactory.Pipeline.json"
+}

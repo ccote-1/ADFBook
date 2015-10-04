@@ -1,0 +1,11 @@
+{
+  "name": "AdventureWorksLTDW-Azure",
+  "properties": {
+    "description": "This is our Azure data warehouse.",
+    "type": "AzureSqlDatabase",
+    "typeProperties": {
+      "connectionString": "Data Source=tcp:aw5hwdp7qg.database.windows.net,1433;Initial Catalog=ADVentureWorksLTDW;Integrated Security=False;User ID=ADFLog;Password=**********;Connect Timeout=30;Encrypt=True"
+    }
+  },
+  "$schema": "http://datafactories.schema.management.azure.com/schemas/2015-08-01/Microsoft.DataFactory.LinkedService.json"
+}

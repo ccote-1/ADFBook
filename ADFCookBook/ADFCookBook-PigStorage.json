@@ -1,10 +1,14 @@
 {
-  "name": "ADFCookBook-Storage",
+  "name": "ADFCookBook-PigStorage",
   "properties": {
     "structure": [
       {
         "name": "OrderDate",
-        "type": "Datetime"
+        "type": "String"
+      },
+      {
+        "name": "CompanyName",
+        "type": "String"
       },
       {
         "name": "FirstName",
@@ -12,10 +16,6 @@
       },
       {
         "name": "LastName",
-        "type": "String"
-      },
-      {
-        "name": "CompanyName",
         "type": "String"
       },
       {
@@ -28,7 +28,7 @@
       },
       {
         "name": "ProvenanceCode",
-        "type": "Int16"
+        "type": "String"
       },
       {
         "name": "ProvenanceDescription",
@@ -40,7 +40,11 @@
       },
       {
         "name": "OrderQty",
-        "type": "Int16"
+        "type": "String"
+      },
+      {
+        "name": "OrderPercent",
+        "type": "Decimal"
       },
       {
         "name": "UnitPrice",
@@ -48,15 +52,15 @@
       },
       {
         "name": "Discount",
-        "type": "Decimal"
+        "type": "String"
       },
       {
         "name": "TaxAmount",
-        "type": "Decimal"
+        "type": "String"
       },
       {
         "name": "Freight",
-        "type": "Decimal"
+        "type": "String"
       },
       {
         "name": "SalesPurchaseOrder",
@@ -71,8 +75,7 @@
     "type": "AzureBlob",
     "linkedServiceName": "ADFCookBookBlobStore",
     "typeProperties": {
-      "fileName": "AdvDWData.txt",
-      "folderPath": "raw/inputfiles/text/{Year}/{Month}/{Day}",
+      "folderPath": "stage/output/text/summary/{Year}/{Month}/{Day}",
       "format": {
         "type": "TextFormat",
         "rowDelimiter": "\n",
@@ -109,7 +112,7 @@
     },
     "availability": {
       "frequency": "Day",
-      "interval": 1
+      "interval": 3
     }
   },
   "$schema": "http://datafactories.schema.management.azure.com/schemas/2015-08-01/Microsoft.DataFactory.Table.json"
