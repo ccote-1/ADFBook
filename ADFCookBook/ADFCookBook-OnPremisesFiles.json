@@ -1,15 +1,15 @@
 {
-  "name": "ADFCookBook-OnPremisesFiles",
-  "properties": {
-    "description": "This linked service is used to demonstrate how ADF can pull data from an on premises file server.",
-    "type": "OnPremisesFileServer",
-    "typeProperties": {
-      "host": "localhost",
-      "gatewayName": "ADFCookBookGateway",
-      "userId": "ccote",
-      "password": "**********",
-      "encryptedCredential": null
-    }
-  },
-  "$schema": "http://datafactories.schema.management.azure.com/schemas/2015-08-01/Microsoft.DataFactory.LinkedService.json"
+    "name": "ADFCookBook-OnPremisesFiles",
+    "properties": {
+        "description": "This linked service is used to demonstrate how ADF can pull data from an on premises file server.",
+        "type": "OnPremisesFileServer",
+        "typeProperties": {
+            "host": "localhost",
+            "gatewayName": "ADFCookBookGateway",
+            "userId": "ccote",
+            "password": "**********",
+            "encryptedCredential": "False"
+        }
+    },
+    "$schema": "http://datafactories.schema.management.azure.com/schemas/2015-08-01/Microsoft.DataFactory.LinkedService.json"
 }
